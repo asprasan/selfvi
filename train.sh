@@ -1,0 +1,19 @@
+python train.py \
+--rank 12 \
+--seq-len 2 \
+--layers 3 \
+--lr 1e-4 \
+--angular 7 \
+--display multilayer \
+--output-dir /data/prasan/hdr/CleanCode/results \
+--experiment no_stereo_uv77 \
+--lambda-depth 1. \
+--model unet_icip \
+--h5-file syn_lf77_seq_contrast.h5 \
+--dataset for_git \
+--disp-model dispnetC \
+--inph 105 \
+--inpw 105 \
+--flow-model flownetC \
+--gpu 0 \
+--batch_size 3
