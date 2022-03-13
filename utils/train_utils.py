@@ -12,7 +12,8 @@ from torch.serialization import default_restore_location
 
 def add_logging_arguments(parser):
     parser.add_argument("--seed", default=42, type=int, help="random number generator seed")
-    parser.add_argument("--output-dir", default="/data/prasan/hdr/CleanCode/results", help="path to experiment directories")
+    parser.add_argument("--output-dir", default="weights", help="path to experiment directories")
+    parser.add_argument("--save-dir", default="results", help="path to save directory for test results")
     parser.add_argument("--experiment", default=None, help="experiment name to be used with Tensorboard")
     parser.add_argument("--resume-training", action="store_true", help="whether to resume training")
     parser.add_argument("--restore-file", default=None, help="filename to load checkpoint")

@@ -84,7 +84,6 @@ def load_data(data_root, args, batch_size=32, num_workers=0, valid_size=0.05):
 
 @register_dataset("test_lf")
 def load_data(data_root, args, batch_size=32, num_workers=0, valid_size=0.05):
-    # import utils_lf
     data_path = os.path.join(data_root,args.h5_file)
 
     with h5py.File(data_path,'r') as f:
@@ -107,8 +106,7 @@ def load_data(data_root, args, batch_size=32, num_workers=0, valid_size=0.05):
 
 
 @register_dataset("test_st")
-def load_cow_spherical(data_root, args, batch_size=32, num_workers=0, valid_size=0.05):
-    import utils_st
+def load_data(data_root, args, batch_size=32, num_workers=0, valid_size=0.05):
     data_path = os.path.join(data_root,args.h5_file)
 
     with h5py.File(data_path,'r') as f:
@@ -123,7 +121,7 @@ def load_cow_spherical(data_root, args, batch_size=32, num_workers=0, valid_size
 
     test_dataset = (data_path, 'test')
 
-    test_set = utils_st.Dataset(test_dataset, idxs = None, n_samples=num_test)
+    test_set = utils.TestStereoDataset(test_dataset, args, idxs = None, n_samples=num_test)
 
     test_loader = torch.utils.data.DataLoader(test_set,**test_params)
 

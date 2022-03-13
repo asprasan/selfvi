@@ -85,10 +85,10 @@ def main(args):
 
 
     # new save path will be near where the test data is
-    save_path = os.path.join(args.data_path, args.h5_file).split('/')[:-1]
-    save_path = os.path.join(*save_path)
-    expt_dir = args.restore_file.split('/')[-3]
-    save_path = os.path.join('/', save_path, expt_dir)
+    # save_path = os.path.join(args.data_path, args.h5_file).split('/')[:-1]
+    # save_path = os.path.join(*save_path)
+    # expt_dir = args.restore_file.split('/')[-3]
+    save_path = args.save_dir#os.path.join('/', save_path, expt_dir)
     if os.path.exists(save_path):
         shutil.rmtree(save_path)
         print(f'removing the directory tree {save_path}')

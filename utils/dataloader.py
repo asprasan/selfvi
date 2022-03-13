@@ -108,3 +108,46 @@ class TestLFDataset(data.Dataset):
         
         inputs['video'] = torch.FloatTensor(I_np/255.)
         return inputs
+
+
+class TestStereoDataset(data.Dataset):
+    def __init__(self, imgs, args, idxs=None, ps=128, n_samples=None):
+        self.frames = args.seq_len
+        self.data = imgs[0]
+        self.mode = imgs[1]
+        self.u = self.v = args.angular
+        self.idxs = range(n_samples) if idxs is None else idxs
+        # self.list_IDs = imgs
+        self.ps = ps
+        self.psh = args.inph
+        self.psw = args.inpw
+        self.shift = args.shift
+
+    def __len__(self):
+        'Denotes the total number of samples'
+        return len(self.idxs)
+
+    def __getitem__(self, index):
+        'Generates one sample of data'
+        inputs = {}
+
+        list_imgs = h5py.File(self.data, 'r')[self.mode]
+
+        idx = self.idxs[index]
+        I_np = list_imgs[idx]
+        
+        h,w = I_np.shape[-2:]
+        k = np.random.randint(I_np.shape[0] - self.frames)
+
+        I_np = I_np[:self.frames]
+
+        left_frame = I_np[:,0,...]
+        right_frame = I_np[:,1,...]
+
+        left_frame = left_frame[...,:-self.shift]
+        right_frame = right_frame[...,self.shift:]
+
+        I_np = np.stack([left_frame, right_frame],1)
+        
+        inputs['video'] = torch.FloatTensor(I_np/255.)
+        return inputs

@@ -21,7 +21,9 @@ python -W ignore test_lf.py \
 --dry-run \
 --test \
 --resume-training \
---restore-file "$save_dir/checkpoints/checkpoint_last.pt"
+--restore-file "weights/checkpoint_last.pt" \
+--save-dir "results"
+#--restore-file "$save_dir/checkpoints/checkpoint_last.pt" \
 # python lf2video.py $save_dir
 # Raytrix/Raytrix_test
 # hybrid/hybrid_test
