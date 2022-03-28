@@ -5,12 +5,12 @@ python train.py \
 --lr 1e-4 \
 --angular 7 \
 --display multilayer \
---output-dir /data/prasan/hdr/CleanCode/results \
---experiment no_stereo_uv77 \
+--output-dir results \
+--experiment expt \
 --lambda-depth 1. \
 --model unet_icip \
 --h5-file syn_lf77_seq_contrast.h5 \
---dataset for_git \
+--dataset train \
 --disp-model dispnetC \
 --inph 105 \
 --inpw 105 \

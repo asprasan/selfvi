@@ -232,7 +232,7 @@ def get_args():
     # Add data arguments
     parser.add_argument(
         "--data-path",
-        default="/data/prasan/datasets/lfv_testFiles/",
+        default="./data",
         help="path to data directory")
     parser.add_argument(
         "--h5-file",

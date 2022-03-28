@@ -28,7 +28,7 @@ def register_dataset(name):
 
     return register_dataset_fn
 
-@register_dataset("for_git")
+@register_dataset("train")
 def load_data(data_root, args, batch_size=32, num_workers=0, valid_size=0.05):
 
     data_path = os.path.join(data_root,args.h5_file)
