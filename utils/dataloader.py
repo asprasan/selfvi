@@ -121,7 +121,6 @@ class TestStereoDataset(data.Dataset):
         self.ps = ps
         self.psh = args.inph
         self.psw = args.inpw
-        self.shift = args.shift
 
     def __len__(self):
         'Denotes the total number of samples'
@@ -141,13 +140,10 @@ class TestStereoDataset(data.Dataset):
 
         I_np = I_np[:self.frames]
 
-        left_frame = I_np[:,0,...]
-        right_frame = I_np[:,1,...]
+        # left_frame = I_np[:,0,...]
+        # right_frame = I_np[:,1,...]
 
-        left_frame = left_frame[...,:-self.shift]
-        right_frame = right_frame[...,self.shift:]
-
-        I_np = np.stack([left_frame, right_frame],1)
+        # I_np = np.stack([left_frame, right_frame],1)
         
         inputs['video'] = torch.FloatTensor(I_np/255.)
         return inputs

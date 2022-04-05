@@ -9,6 +9,7 @@ python train.py \
 --experiment expt \
 --lambda-depth 1. \
 --model unet_icip \
+--data-path data \
 --h5-file syn_lf77_seq_contrast.h5 \
 --dataset train \
 --disp-model dispnetC \
